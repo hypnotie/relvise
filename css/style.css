@@ -77,16 +77,23 @@ svg path {
 
 /* -----------------------------       HEADER       ----------------------------- */
 
+/*	TODO: Sandwich menu. */
+/*	TODO: Fixed menu. */
+
 .header {
-	position: absolute;
+	position: fixed;
 	width: 100%;
 	left: 0;
 	top: 0;
 	z-index: 50;
+	transition: background 0.3s ease 0s, transform 0.1s linear;
+}
+.header.hide {
+	transform: translateY(-130px);
 }
 .header__container {
 	display: flex;
-	min-height: 104px;
+	min-height: 120px;
 	align-items: center;
 }
 .header__logo {
@@ -144,6 +151,8 @@ svg path {
 }
 
 /* -----------------------------     MAIN BLOCK     ----------------------------- */
+
+/*	TODO: Better background on adaptive. */
 
 .main-block {
 	position: relative;
@@ -214,8 +223,9 @@ svg path {
 
 /* -----------------------------      SERVICES      ----------------------------- */
 
-/*	TODO: Smooth hover. */
-
+.services {
+	padding: 0px 0px 40px 0px;
+}
 .services__column {
 	flex: 0 1 33.333%;
 }
@@ -280,7 +290,7 @@ svg path {
 /* -----------------------------     ADVANTAGES     ----------------------------- */
 
 .advantages {
-	padding: 80px 0px 0px;
+	padding: 40px 0px 40px;
 }
 .advantages-subtitle {
 	max-width: 511px;
@@ -300,15 +310,30 @@ svg path {
 	font-weight: 700;
 	padding: 30px;
 	text-align: center;
+	transition: all 0.3s ease 0s;
 }
 .advantages__item > *:not(:last-child) {
 	margin: 0px 0px 10px 0px;
+}
+.advantages__item:hover {
+	background-color: #0d5c63;
+	color: #fff;
+}
+.advantages__item:hover svg {
+	fill: #fff;
+}
+.advantages__item:hover .advantages__text {
+	color: #fff;
 }
 .advantages__icon {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	height: 48px;
+}
+.advantages__icon svg {
+	fill: #0d5c63;
+	transition: all 0.3s ease 0s;
 }
 .advantages__value {
 	font-size: 40px;
@@ -319,12 +344,13 @@ svg path {
 	font-size: 16px;
 	line-height: calc(24 / 16);
 	letter-spacing: 0.1px;
+	transition: all 0.3s ease 0s;
 }
 
 /* -----------------------------      PRACTICE      ----------------------------- */
 
 .practice {
-	padding: 80px 0px 40px 0px;
+	padding: 40px 0px 40px 0px;
 }
 .practice-subtitle {
 	max-width: 470px;
@@ -393,7 +419,7 @@ svg path {
 	align-items: flex-start;
 }
 .whoweare__video {
-	flex: 0 0 57%;
+	flex: 0 0 50.5%;
 	position: relative;
 	padding: 0px 0px 42.25% 0px;
 }
@@ -407,12 +433,13 @@ svg path {
 }
 .whoweare__content {
 	flex: 1 1 auto;
-	padding: 0px 0px 0px 121px;
+	padding: 0px 0px 0px 80px;
 }
 .whoweare__top:not(:last-child) {
 	margin: 0px 0px 50px 0px;
 }
 .whoweare__title {
+	max-width: 350px;
 	font-size: 40px;
 	font-weight: 700;
 	line-height: calc(57 / 40);
@@ -460,6 +487,8 @@ svg path {
 }
 
 /* -----------------------------       CLIENTS      ----------------------------- */
+
+/* TODO: Smaller logos on adaptive. */
 
 .clients {
 	padding: 40px 0px;
@@ -561,7 +590,8 @@ svg path {
 	padding: 0px 0px 40px 0px;
 }
 .getintouch__header {
-	padding: 80px 0px 0px 0px;
+	margin: 40px 0px 0px 0px;
+	padding: 40px 0px 0px 0px;
 }
 .getintouch-subtitle {
 	max-width: 470px;
@@ -686,6 +716,8 @@ svg path {
 }
 
 /* -----------------------------     FOOTER TOP     ----------------------------- */
+
+/*	TODO: Spoilers. */
 
 .footer__top {
 	background-color: #17213c;
@@ -830,7 +862,7 @@ svg path {
 }
 .to-top svg {
 	position: relative;
-	top: 12px;
+	top: 13px;
 	right: -1px;
 	fill: #fff;
 	transition: all 0.3s ease-in-out;
@@ -893,6 +925,9 @@ svg path {
 		margin: 0px 0px 0px 80px;
 	}
 	/* --------    SERVICES    -------- */
+	.services {
+		padding: 0px 0px 25px;
+	}
 	.services__column {
 		flex: 0 1 50%;
 	}
@@ -911,11 +946,11 @@ svg path {
 	}
 	/* --------   ADVANTAGES   -------- */
 	.advantages {
-		padding: 50px 0px 0px;
+		padding: 25px 0px;
 	}
 	/* --------    PRACTICE    -------- */
 	.practice {
-		padding: 50px 0px 25px 0px;
+		padding: 25px 0px;
 	}
 	/* --------   WHO WE ARE   -------- */
 	.whoweare {
@@ -936,7 +971,8 @@ svg path {
 		padding: 0px 0px 20px 0px;
 	}
 	.getintouch__header {
-		padding: 50px 0px 0px 0px;
+		margin: 25px 0px 0px;
+		padding: 25px 0px 0px 0px;
 	}
 	.item-getintouch {
 		padding: 25px 15px;
@@ -980,6 +1016,9 @@ svg path {
 	.whoweare__video:not(:last-child) {
 		margin: 0px 0px 25px 0px;
 	}
+	.whoweare__title {
+		max-width: 100%;
+	}
 	.whoweare__content {
 		padding: 0px 0px 0px 0px;
 	}
@@ -1008,6 +1047,10 @@ svg path {
 	.header__menu {
 		margin: 0px 0px 0px 40px;
 	}
+	/* --------    SERVICES    -------- */
+	.services {
+		padding: 0px 0px 20px;
+	}
 	/* -------- HEADER 2 BLOCK -------- */
 	.header-block {
 		margin: 0px 0px 25px 0px;
@@ -1017,11 +1060,11 @@ svg path {
 	}
 	/* --------   ADVANTAGES   -------- */
 	.advantages {
-		padding: 40px 0px 0px;
+		padding: 20px 0px;
 	}
 	/* --------    PRACTICE    -------- */
 	.practice {
-		padding: 40px 0px 20px;
+		padding: 20px 0px;
 	}
 	/* --------   WHO WE ARE   -------- */
 	.whoweare {
