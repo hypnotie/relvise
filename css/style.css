@@ -46,6 +46,11 @@ body {
 	background-color: #fafafa;
 	color: #252b42;
 }
+svg path {
+	stroke: inherit;
+	stroke-width: inherit;
+	fill: inherit;
+}
 .wrapper {
 	display: flex;
 	flex-direction: column;
@@ -71,8 +76,6 @@ body {
 }
 
 /* -----------------------------       HEADER       ----------------------------- */
-
-/* TODO: Menu links go to sections. */
 
 .header {
 	position: absolute;
@@ -108,9 +111,22 @@ body {
 	font-weight: 600;
 	color: #737373;
 	line-height: calc(24 / 14);
+	position: relative;
+	display: inline-block;
 }
-.menu__link:hover {
-	text-decoration: underline;
+.menu__link::after {
+	position: absolute;
+	left: 50%;
+	content: "";
+	height: 0.1px;
+	background: #737373;
+	transition: all 0.3s ease 0s;
+	width: 0;
+	bottom: -3px;
+}
+.menu__link:hover::after {
+	width: 100%;
+	margin: 0 -50%;
 }
 
 /* -----------------------------       PAGES        ----------------------------- */
@@ -208,15 +224,7 @@ body {
 	background-color: #fff;
 	padding: 35px 40px;
 	box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
-}
-.item-service_green {
-	background-color: #0d5c63;
-}
-.item-service_green .item-service__title {
-	color: #fff;
-}
-.item-service_green .item-service__text {
-	color: #fff;
+	transition: all 0.3s ease 0s;
 }
 .item-service > *:not(:last-child) {
 	margin: 0px 0px 10px 0px;
@@ -230,6 +238,21 @@ body {
 .item-service__text {
 	color: #737373;
 	line-height: calc(20 / 14);
+	transition: all 0.3s ease 0s;
+}
+.item-service:hover {
+	background-color: #0d5c63;
+	color: #fff;
+}
+.item-service:hover .item-service__text {
+	color: #fff;
+}
+.item-service svg {
+	fill: #0d5c63;
+	transition: all 0.3s ease 0s;
+}
+.item-service:hover svg {
+	fill: #fff;
 }
 
 /* --------------------------      HEADER 2 BLOCK      -------------------------- */
@@ -329,9 +352,10 @@ body {
 .item-practice__link {
 	display: inline-block;
 	color: inherit;
+	transition: all 0.3s ease 0s;
 }
 .item-practice__link:hover {
-	text-decoration: underline;
+	color: rgba(23, 27, 41, 0.76);
 }
 .item-practice__link:not(:last-child) {
 	margin: 0px 0px 15px 0px;
@@ -349,6 +373,10 @@ body {
 .item-practice__image {
 	display: block;
 	padding: 0px 0px 60% 0px;
+	transition: all 0.3s ease 0s;
+}
+.item-practice__image:hover {
+	transform: scale(1.05);
 }
 
 /* -----------------------------     WHO WE ARE     ----------------------------- */
@@ -545,20 +573,20 @@ body {
 	flex: 0 1 33.333%;
 }
 .item-getintouch {
+	margin: 40px 0px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	padding: 50px 15px;
 	background-color: #fff;
+	transition: all 0.3s ease 0s;
 }
 .item-getintouch > *:not(:last-child) {
 	margin: 0px 0px 15px 0px;
 }
-.item-getintouch_active {
-	background-color: #252b42;
-	color: #fff;
-	padding: 80px 15px;
+.item-getintouch__icon svg {
+	fill: #0d5c63;
 }
 .item-getintouch__emails {
 	display: flex;
@@ -570,9 +598,22 @@ body {
 	color: inherit;
 	font-weight: 600;
 	line-height: calc(24 / 14);
+	display: inline-block;
+	position: relative;
 }
-.item-getintouch__email:hover {
-	text-decoration: underline;
+.item-getintouch__email::after {
+	position: absolute;
+	left: 50%;
+	content: "";
+	height: 0.1px;
+	background: #fff;
+	transition: all 0.3s ease 0s;
+	width: 0;
+	bottom: 1px;
+}
+.item-getintouch__email:hover::after {
+	width: 100%;
+	margin: 0 -50%;
 }
 .item-getintouch__label {
 	font-weight: 700;
@@ -594,18 +635,6 @@ body {
 	text-align: center;
 	transition: all 0.3s ease 0s;
 	display: flex;
-}
-.item-getintouch__button:hover {
-	background-color: #ff7b47;
-	color: #fff;
-}
-.item-getintouch_active .item-getintouch__button {
-	border: 1px solid #fff;
-	color: #fff;
-}
-.item-getintouch_active .item-getintouch__button:hover {
-	background-color: #fff;
-	color: #252b42;
 }
 
 /* -----------------------------       CONTACT      ----------------------------- */
@@ -662,8 +691,6 @@ body {
 	background-color: #17213c;
 	padding: 35px 0px;
 }
-.footer__main {
-}
 .footer__row {
 	display: flex;
 	flex-wrap: wrap;
@@ -674,7 +701,7 @@ body {
 	flex: 0 1 16.6667%;
 }
 .footer__column:last-child {
-	flex: 0 1 33.33345;
+	flex: 0 1 33.3334%;
 }
 .footer__label {
 	color: #fff;
@@ -692,38 +719,59 @@ body {
 	letter-spacing: 0.2px;
 	font-weight: 600;
 	line-height: calc(24 / 16);
+	display: inline-block;
+	position: relative;
 }
-.menu-footer__link:hover {
-	text-decoration: underline;
+.menu-footer__link::after {
+	position: absolute;
+	left: 0;
+	content: "";
+	height: 0.1px;
+	background: #fff;
+	transition: all 0.3s ease 0s;
+	width: 0;
+	bottom: -3px;
 }
-.contacts-footer {
+.menu-footer__link:hover::after {
+	width: 100%;
+	margin: 0;
+}
+.contacts-footer__column {
 	display: flex;
 	flex-direction: column;
 }
 .contacts-footer__item {
-	padding: 0px 0px 0px 34px;
-	font-weight: 600;
-	color: #fff;
-	letter-spacing: 0.2px;
-	line-height: calc(24 / 14);
 	display: flex;
 	align-items: center;
-	min-height: 32px;
 }
 .contacts-footer__item:not(:last-child) {
 	margin: 0px 0px 10px 0px;
 }
-.contacts-footer__item:hover {
-	text-decoration: underline;
+.contacts-footer__icon {
+	margin: 0px 10px 0px 0px;
 }
-.contacts-footer__item_phone {
-	background: url("../img/footer/icons/01.svg") 0 4px no-repeat;
+.contacts-footer__link {
+	padding: 0px 0px 3px 0px;
+	font-weight: 600;
+	color: #fff;
+	letter-spacing: 0.2px;
+	line-height: calc(24 / 14);
+	display: inline-block;
+	position: relative;
 }
-.contacts-footer__item_map {
-	background: url("../img/footer/icons/02.svg") 0 2px no-repeat;
+.contacts-footer__link::after {
+	position: absolute;
+	left: 0;
+	content: "";
+	height: 0.1px;
+	background: #fff;
+	transition: all 0.3s ease 0s;
+	width: 0;
+	bottom: 1px;
 }
-.contacts-footer__item_email {
-	background: url("../img/footer/icons/03.svg") left no-repeat;
+.contacts-footer__link:hover::after {
+	width: 100%;
+	margin: 0;
 }
 
 /* -----------------------------   FOOTER BOTTOM    ----------------------------- */
@@ -746,6 +794,12 @@ body {
 .social {
 	display: flex;
 	align-items: center;
+}
+.social__item {
+	transition: all 0.3s ease 0s;
+}
+.social__item:hover {
+	filter: brightness(50%);
 }
 .social__item:not(:last-child) {
 	margin: 0px 20px 0px 0px;
@@ -774,7 +828,6 @@ body {
 .to-top:hover {
 	background: #3b7e85;
 }
-
 .to-top svg {
 	position: relative;
 	top: 12px;
@@ -782,13 +835,11 @@ body {
 	fill: #fff;
 	transition: all 0.3s ease-in-out;
 }
-
 .to-top:hover svg {
 	cursor: pointer;
 	fill: #fff;
 	transition: all 0.3s ease-in-out;
 }
-
 .to-top.show {
 	opacity: 1;
 	visibility: visible;
@@ -825,6 +876,9 @@ body {
 	/* --------    PRACTICE    -------- */
 	.practice__column {
 		flex: 0 1 50%;
+	}
+	.item-practice__image:hover {
+		transform: none;
 	}
 }
 @media (max-width: 1036px) {
@@ -879,13 +933,21 @@ body {
 	}
 	/* --------  GET IN TOUCH  -------- */
 	.getintouch {
-		padding: 0px 0px 25px 0px;
+		padding: 0px 0px 20px 0px;
 	}
 	.getintouch__header {
 		padding: 50px 0px 0px 0px;
 	}
 	.item-getintouch {
 		padding: 25px 15px;
+		margin: 30px 0px;
+	}
+	.item-getintouch__email::after {
+		background: #000;
+	}
+	.item-getintouch__button:hover {
+		background-color: #ff7b47;
+		color: #fff;
 	}
 	/* --------     CONTACT    -------- */
 	.contact {
@@ -894,9 +956,13 @@ body {
 	/* --------   FOOTER TOP   -------- */
 	.footer__column {
 		flex: 0 1 25%;
+		padding: 15px 25px;
 	}
 	.footer__column:last-child {
+		display: flex;
+		flex-direction: column;
 		flex: 0 1 100%;
+		align-items: center;
 	}
 }
 @media (max-width: 950px) {
@@ -986,6 +1052,9 @@ body {
 		padding: 0px 100px 0px 0px;
 	}
 	/* --------   FOOTER TOP   -------- */
+	.footer__top {
+		padding: 25px 0px;
+	}
 	.footer__column {
 		flex: 0 1 50%;
 	}
@@ -1005,6 +1074,10 @@ body {
 	}
 }
 @media (max-width: 560px) {
+	/* --------     HEADER     -------- */
+	.menu__link:hover::after {
+		width: 0;
+	}
 	/* --------   ADVANTAGES   -------- */
 	.advantages__column {
 		flex: 0 1 100%;
@@ -1063,6 +1136,12 @@ body {
 		padding: 0px 15px;
 	}
 }
+@media (max-width: 377px) {
+	/* --------   FOOTER TOP   -------- */
+	.footer__column {
+		padding: 15px 15px;
+	}
+}
 @media (min-width: 1070px) {
 	/* --------    SUBSCRIBE   -------- */
 	.subscribe__body {
@@ -1075,6 +1154,27 @@ body {
 		margin: 0;
 		display: flex;
 		align-items: center;
+	}
+	.item-getintouch:hover {
+		background-color: #252b42;
+		color: #fff;
+		padding: 80px 15px;
+		margin: -40px 0px;
+	}
+	.item-getintouch:hover .item-getintouch__button {
+		background-color: #252b42;
+		color: #fff;
+		border: 1px solid #fff;
+	}
+	.item-getintouch:hover svg {
+		fill: #fff;
+	}
+	.item-getintouch__icon svg {
+		transition: all 0.3s ease 0s;
+	}
+	.item-getintouch__button:hover:hover {
+		background-color: #fff;
+		color: #252b42;
 	}
 }
 @media (min-width: 810px) {
