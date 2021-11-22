@@ -1,3 +1,37 @@
+let lastScroll = 0;
+const defaultOffset = 100;
+const header = document.querySelector('.header');
+const mainContainer = document.querySelector('._container');
+const headerContainer = document.querySelector('.header__container');
+const menuLink = document.querySelector('.menu__link');
+
+const scrollPosition = () => window.pageYOffset || document.documentElement.scrollTop;
+const containHide = () => header.classList.contains('hide');
+
+window.addEventListener('scroll', () => {
+	if (scrollPosition() < 120) {
+		header.style = "background: none";
+		headerContainer.style = "min-height: 120px; transition: min-height 0.5s ease 0s;";
+
+	}
+	if (scrollPosition() > lastScroll && !containHide()) {
+		//scroll down
+		header.classList.add('hide');
+	}
+	else if (scrollPosition() < lastScroll && containHide()) {
+		//scroll up
+		header.classList.remove('hide');
+		header.style = "background: #fff";
+		headerContainer.style = "min-height: 80px; transition: none;";
+	}
+
+	lastScroll = scrollPosition();
+})
+menuLink.addEventListener("click", function() {
+	header.classList.add('hide');
+});
+
+
 function scrollTo(to, duration = 700) {
 	const
 		element = document.scrollingElement || document.documentElement,
